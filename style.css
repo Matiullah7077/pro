@@ -1,6 +1,32 @@
 /* Google fonts */
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Playfair+Display:wght@400..900&family=DM+Sans:wght@400;500;700&display=swap');
 
+/* CSS Variables for Theme */
+:root {
+    --bg-primary: #001030;
+    --bg-secondary: #011738;
+    --text-primary: #ffffff;
+    --text-secondary: #808798;
+    --text-muted: #6B788C;
+    --accent-blue: #005FFB;
+    --accent-green: #A7FF52;
+    --shadow-color: #0075F1;
+    --border-color: #054362;
+}
+
+/* Light Theme */
+body.light-theme {
+    --bg-primary: #f5f7fa;
+    --bg-secondary: #ffffff;
+    --text-primary: #1a202c;
+    --text-secondary: #4a5568;
+    --text-muted: #718096;
+    --accent-blue: #0066ff;
+    --accent-green: #48bb78;
+    --shadow-color: #cbd5e0;
+    --border-color: #e2e8f0;
+}
+
 /* CSS Reset */
 * {
     margin: 0;
@@ -17,6 +43,7 @@ body {
     min-height: 100vh;
     font-family: 'DM Sans', sans-serif;
     overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Services button animations */
@@ -49,13 +76,49 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #001030;
+    background-color: var(--bg-primary);
     display: flex;
     justify-content: center;
+    align-items: center;
     font-size: 18px;
     padding: 20px 10px;
-    box-shadow: 0px 0px 25px #0075F1;
+    box-shadow: 0px 0px 25px var(--shadow-color);
     z-index: 1000;
+    gap: 30px;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    background-color: transparent;
+    border: 2px solid var(--accent-green);
+    color: var(--text-primary);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.theme-toggle:hover {
+    background-color: var(--accent-green);
+    transform: rotate(180deg);
+    box-shadow: 0 0 20px var(--accent-green);
+}
+
+.theme-toggle::before {
+    content: '🌙';
+    position: absolute;
+    transition: opacity 0.3s ease;
+}
+
+body.light-theme .theme-toggle::before {
+    content: '☀️';
 }
 
 .nav-ul {
@@ -73,14 +136,14 @@ body {
 
 .nav-ul li a {
     text-decoration: none;
-    color: #ffffff;
+    color: var(--text-primary);
     position: relative;
     padding: 5px 0;
     display: block;
 }
 
 .nav-ul li a:hover {
-    color: #A7FF52;
+    color: var(--accent-green);
 }
 
 .nav-ul li a::after {
@@ -90,7 +153,7 @@ body {
     bottom: -5px;
     height: 3px;
     width: 100%;
-    background-color: #A7FF52;
+    background-color: var(--accent-green);
     transition: all ease-in 0.3s;
     transform: scaleX(0);
 }
@@ -101,7 +164,7 @@ body {
 
 /* Hero section styling */
 .hero-section {
-    background-color: #001030;
+    background-color: var(--bg-primary);
     font-family: 'Space Grotesk', sans-serif;
     display: flex;
     flex-wrap: wrap;
@@ -109,7 +172,7 @@ body {
     align-items: center;
     gap: 40px;
     padding: 120px 20px 60px 20px;
-    color: #ffffff;
+    color: var(--text-primary);
 }
 
 .content-div {
@@ -127,7 +190,7 @@ body {
 
 .content-div p {
     font-size: clamp(16px, 3vw, 20px);
-    color: #808798;
+    color: var(--text-secondary);
     font-weight: 600;
     line-height: 1.6;
 }
@@ -137,8 +200,8 @@ body {
 }
 
 .hero-btn button {
-    background-color: #005FFB;
-    color: #ffffff;
+    background-color: var(--accent-blue);
+    color: var(--text-primary);
     width: 150px;
     padding: 12px 20px;
     border: none;
@@ -152,8 +215,8 @@ body {
 
 .hero-btn button:hover {
     background-color: transparent;
-    color: #005FFB;
-    border: 2px solid #005FFB;
+    color: var(--accent-blue);
+    border: 2px solid var(--accent-blue);
     transform: translateZ(0px);
 }
 
@@ -175,13 +238,13 @@ body {
 
 /* Impact section styling */
 .impact-section {
-    background-color: #011738;
+    background-color: var(--bg-secondary);
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 40px;
     padding: 50px 20px;
-    color: #ffffff;
+    color: var(--text-primary);
 }
 
 .impact-div {
@@ -191,14 +254,14 @@ body {
     width: 100%;
     padding: 25px 35px;
     border-radius: 12px;
-    box-shadow: 0 0 15px #0075F1, 0 0 30px #0075F1;
+    box-shadow: 0 0 15px var(--shadow-color), 0 0 30px var(--shadow-color);
     cursor: pointer;
     transition: all 0.5s ease-out;
 }
 
 .impact-div:hover {
     transform: scale(1.1);
-    box-shadow: inset 0px 0px 25px #0075F1;
+    box-shadow: inset 0px 0px 25px var(--shadow-color);
 }
 
 .impact-div h3 {
@@ -210,7 +273,7 @@ body {
 .impact-div p {
     font-size: clamp(14px, 3vw, 18px);
     font-weight: bold;
-    color: #4E5D74;
+    color: var(--text-muted);
 }
 
 .impact-div img {
@@ -220,7 +283,7 @@ body {
 
 /* Skills section styling */
 .skill-section {
-    background-color: #011738;
+    background-color: var(--bg-secondary);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -245,13 +308,13 @@ body {
     text-align: center;
     font-size: 18px;
     font-weight: normal;
-    color: #3284ff;
-    box-shadow: inset 0px 0px 20px #A7FF52;
+    color: var(--accent-blue);
+    box-shadow: inset 0px 0px 20px var(--accent-green);
 }
 
 .skill-div {
     font-family: 'Space Grotesk', sans-serif;
-    color: #ffffff;
+    color: var(--text-primary);
     width: 100%;
     max-width: 1200px;
 }
@@ -271,7 +334,7 @@ body {
 .skills-content p {
     font-size: clamp(16px, 3vw, 18px);
     font-weight: 600;
-    color: #6B788C;
+    color: var(--text-muted);
     max-width: 800px;
     margin: 0 auto;
     line-height: 1.6;
@@ -293,11 +356,11 @@ body {
     justify-content: space-between;
     margin-bottom: 8px;
     font-size: clamp(14px, 3vw, 18px);
-    color: #b7c9e4;
+    color: var(--text-secondary);
 }
 
 .fill {
-    background-color: #01336F;
+    background-color: var(--border-color);
     width: 100%;
     height: 6px;
     border-radius: 12px;
@@ -305,7 +368,7 @@ body {
 
 .bar {
     height: 6px;
-    background-color: #005FFB;
+    background-color: var(--accent-blue);
     border-radius: 12px;
     transition: width 1s ease;
 }
@@ -324,15 +387,15 @@ body {
 /* Services Section styling */
 .services-section {
     font-family: 'Space Grotesk', sans-serif;
-    background-color: #001030;
+    background-color: var(--bg-primary);
     text-align: center;
     padding: 55px 20px;
-    color: #ffffff;
+    color: var(--text-primary);
 }
 
 .services-section > p {
     margin: 0 auto 20px;
-    border-left: 3px solid greenyellow;
+    border-left: 3px solid var(--accent-green);
     width: fit-content;
     padding-left: 15px;
     text-align: left;
@@ -349,24 +412,24 @@ body {
 
 .services-detail {
     font-family: 'Space Grotesk', sans-serif;
-    background-color: #001030;
+    background-color: var(--bg-primary);
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 30px;
     padding: 20px;
-    color: #ffffff;
+    color: var(--text-primary);
 }
 
 .services {
-    background-color: #011738;
+    background-color: var(--bg-secondary);
     width: 100%;
     max-width: 337px;
     min-height: 447px;
     text-align: center;
     padding: 40px 20px;
     border-radius: 20px;
-    box-shadow: 0px 0px 15px #0075F1;
+    box-shadow: 0px 0px 15px var(--shadow-color);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -380,7 +443,7 @@ body {
 
 .services h1 {
     font-size: clamp(22px, 4vw, 27px);
-    color: #E3E6EA;
+    color: var(--text-primary);
     margin: 30px 0 25px 0;
     line-height: 1.3;
 }
@@ -388,7 +451,7 @@ body {
 .services p {
     font-size: clamp(14px, 3vw, 16px);
     font-family: 'DM Sans', sans-serif;
-    color: #6B788C;
+    color: var(--text-muted);
     line-height: 1.6;
     flex-grow: 1;
 }
@@ -396,12 +459,12 @@ body {
 .services button {
     background-color: transparent;
     font-size: 18px;
-    color: #ffffff;
+    color: var(--text-primary);
     padding: 10px 25px;
     border: none;
     outline: none;
-    border-left: 2px solid #A7FF52;
-    border-right: 2px solid #A7FF52;
+    border-left: 2px solid var(--accent-green);
+    border-right: 2px solid var(--accent-green);
     margin-top: 25px;
     border-radius: 5px;
     cursor: pointer;
@@ -415,9 +478,9 @@ body {
 
 /* Portfolio section styling */
 .my-portfolio-section {
-    background-color: #011738;
+    background-color: var(--bg-secondary);
     padding: 50px 20px;
-    color: #ffffff;
+    color: var(--text-primary);
     font-family: 'Space Grotesk', sans-serif;
     text-align: center;
 }
@@ -431,7 +494,7 @@ body {
 .portfolio-header p {
     font-size: clamp(16px, 3vw, 17px);
     font-weight: 600;
-    color: #6B788C;
+    color: var(--text-muted);
     margin-bottom: 50px;
     max-width: 700px;
     margin-left: auto;
@@ -461,7 +524,7 @@ body {
 .all-projects p {
     font-weight: normal;
     font-size: clamp(14px, 3vw, 16px);
-    color: #6B788C;
+    color: var(--text-muted);
     line-height: 1.5;
 }
 
@@ -485,14 +548,14 @@ body {
 
 /* Contact section styling */
 .contact-section {
-    background-color: #001030;
+    background-color: var(--bg-primary);
     font-family: 'Space Grotesk', sans-serif;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 40px;
     padding: 50px 20px;
-    color: #ffffff;
+    color: var(--text-primary);
 }
 
 .my-detail-div {
@@ -522,18 +585,18 @@ body {
 
 #PEL {
     font-size: clamp(16px, 3vw, 20px);
-    color: #6B788C;
+    color: var(--text-muted);
     display: block;
     margin-bottom: 5px;
 }
 
 .form-detail {
-    background-color: #011738;
+    background-color: var(--bg-secondary);
     width: 100%;
     max-width: 568px;
     padding: 30px 20px;
     border-radius: 20px;
-    box-shadow: 0px 0px 13px #005FFB;
+    box-shadow: 0px 0px 13px var(--shadow-color);
 }
 
 .form-detail h1 {
@@ -546,15 +609,15 @@ body {
     background-color: transparent;
     padding: 18px 10px;
     border-radius: 15px;
-    border: 0.5px solid #054362;
+    border: 0.5px solid var(--border-color);
     font-size: 16px;
-    color: #ffffff;
+    color: var(--text-primary);
     outline: none;
     width: 100%;
 }
 
 .form-detail input:focus {
-    border: 0.5px solid #A7FF52;
+    border: 0.5px solid var(--accent-green);
 }
 
 .name-detail {
@@ -580,17 +643,17 @@ body {
     min-height: 150px;
     padding: 15px 10px;
     margin-bottom: 13px;
-    border: 0.5px solid #054362;
+    border: 0.5px solid var(--border-color);
     border-radius: 12px;
     font-size: 16px;
     outline: none;
-    color: #ffffff;
+    color: var(--text-primary);
     font-family: 'DM Sans', sans-serif;
     resize: vertical;
 }
 
 .form-detail textarea:focus {
-    border: 0.5px solid #A7FF52;
+    border: 0.5px solid var(--accent-green);
 }
 
 .form-detail button {
@@ -601,14 +664,14 @@ body {
     font-weight: bold;
     margin-top: 16px;
     border-radius: 5px;
-    border: 1px solid #A7FF52;
-    color: #ffffff;
+    border: 1px solid var(--accent-green);
+    color: var(--text-primary);
     cursor: pointer;
     transition: all 0.5s;
 }
 
 .form-detail button:hover {
-    box-shadow: inset 0px 0px 20px #A7FF52;
+    box-shadow: inset 0px 0px 20px var(--accent-green);
 }
 
 #form-checkbox {
@@ -634,6 +697,12 @@ body {
     .nav-ul {
         gap: 15px;
         font-size: 16px;
+    }
+    
+    .theme-toggle {
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
     }
     
     .hero-section {
@@ -671,6 +740,8 @@ body {
 @media (max-width: 480px) {
     .navBar-section {
         padding: 12px 10px;
+        flex-direction: column;
+        gap: 15px;
     }
     
     .nav-ul {
@@ -678,8 +749,14 @@ body {
         font-size: 14px;
     }
     
+    .theme-toggle {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+    
     .hero-section {
-        padding: 90px 15px 30px;
+        padding: 140px 15px 30px;
     }
     
     .content-div {
