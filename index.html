@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Mati Ullah Afridi - Full Stack Web Developer Portfolio showcasing modern web applications and projects">
     <title>Mati Ullah Afridi - Web Developer Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="myportfolio.css">
 </head>
 <body>      
     <!-- NavBar section -->
@@ -17,6 +17,7 @@
            <li><a href="#services">Services</a></li>
            <li><a href="#contact">Contact</a></li>
         </ul>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"></button>
     </nav>
 
     <!-- Hero Section -->
@@ -272,7 +273,7 @@
                 <!-- Email detail -->
                 <div class="email-detail">
                     <span id="PEL">Email:</span>
-                    <span>matiullah22427077@gmail.com</span>
+                    <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="224f43564b574e4e434a101016101512151562454f434b4e0c414d4f">[email&#160;protected]</a></span>
                 </div>
             </div>
             <!-- Location detail -->
@@ -280,7 +281,7 @@
                 <span id="PEL">Location:</span>
                 <span>KPK, Peshawar, Hayatabad, Phase - 6, Sector: F9</span>
             </div>
-            <div style="margin-top: 23px; background-color: #A7FF52; width: 100%; height: 2px;"></div>
+            <div style="margin-top: 23px; background-color: var(--accent-green); width: 100%; height: 2px;"></div>
         </div>
         
         <!-- Contact form -->
@@ -300,9 +301,33 @@
                 <label for="form-checkbox">
                     I have read and acknowledge the <span style="color: #005FFB;">Terms and Conditions</span>
                 </label>
+                </label>
             </div>
             <button type="submit">Submit Inquiry</button>
         </form>
     </section>
+
+    <script>
+        // Theme Toggle Functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+
+        // Check for saved theme preference or default to 'dark'
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        
+        // Apply the saved theme on page load
+        if (currentTheme === 'light') {
+            body.classList.add('light-theme');
+        }
+
+        // Toggle theme on button click
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('light-theme');
+            
+            // Save theme preference
+            const theme = body.classList.contains('light-theme') ? 'light' : 'dark';
+            localStorage.setItem('theme', theme);
+        });
+    </script>
 </body>
 </html>
