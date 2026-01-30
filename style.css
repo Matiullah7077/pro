@@ -1,40 +1,45 @@
 /* Google fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lobster&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Zalando+Sans+Expanded:ital,wght@0,200..900;1,200..900&display=swap');
-*{
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-html body{
+
+html body {
     width: 100%;
-    height: 100vh;
+    overflow-x: hidden; /* Prevents horizontal scrollbar */
 }
+
 /* services button animations */
 @keyframes services-btn {
-    0%{
+    0% {
         box-shadow: none;
         transform: translateY(none);
     }
-    50%{
-        box-shadow:inset 0px 0px 15px #A7FF52;
-        /* transform: translateY(-12px); */
-    }100%{
-        box-shadow: inset 0px 0px 20px #A7FF52 ;
+    50% {
+        box-shadow: inset 0px 0px 15px #A7FF52;
+    }
+    100% {
+        box-shadow: inset 0px 0px 20px #A7FF52;
         transform: translateY(-15px);
     }
 }
+
 /* services button animations after hover  */
 @keyframes services-btn-hover {
-    to{
+    to {
         box-shadow: none;
         animation: none;
     }
-    from{
+    from {
         box-shadow: 0px 0px 16px #A7FF52;
     }
 }
+
 /* NavBar styling  */
-.navBar-section{
+.navBar-section {
     position: fixed;
     top: 0;
     left: 0;
@@ -47,21 +52,27 @@ html body{
     box-shadow: 0px 0px 25px #0075F1;
     z-index: 1000;
 }
-.nav-ul{
+
+.nav-ul {
     display: flex;
     gap: 25px;
     font-family: "Rubik", sans-serif;
     list-style: none;
+    flex-wrap: wrap; /* Allows menu to wrap on very small screens */
+    justify-content: center;
 }
-.nav-ul li a{
+
+.nav-ul li a {
     text-decoration: none;
     color: #ffffff;
     position: relative;
 }
-.nav-ul li a:hover{
+
+.nav-ul li a:hover {
     color: #A7FF52;
 }
-.nav-ul li a::after{
+
+.nav-ul li a::after {
     content: "";
     position: absolute;
     left: 0;
@@ -72,11 +83,13 @@ html body{
     transition: all ease-in 0.3s;
     transform: scaleX(0);
 }
-.nav-ul li a:hover::after{
+
+.nav-ul li a:hover::after {
     transform: scaleX(1);
 }
+
 /* hero section styling */
-.hero-section{
+.hero-section {
     background-color: #001030;
     font-family: "Rubik", sans-serif;
     display: flex;
@@ -84,208 +97,265 @@ html body{
     justify-content: center;
     align-items: center;
     gap: 21px;
-    padding: 120px 0 44px 0;
-
+    padding: 120px 20px 44px; /* Added side padding for mobile */
     color: #ffffff;
+    width: 100%;
 }
-.content-div{
-    width: 600px;
+
+.content-div {
+    max-width: 600px; /* Fluid width */
+    width: 100%;
     padding: 15px 0px;
     font-size: 23px;
-
+    text-align: center; /* Center text on mobile */
 }
-.content-div h1{
+
+@media(min-width: 768px) {
+    .content-div {
+        text-align: left; /* Align left on desktop */
+    }
+}
+
+.content-div h1 {
     margin-bottom: 16px;
 }
-.content-div p{
+
+.content-div p {
     font-size: 20px;
     color: #808798;
     font-weight: 600;
 }
-.hero-btn{
+
+.hero-btn {
     perspective: 700px;
+    margin-top: 18px;
 }
-.hero-btn button{
+
+.hero-btn button {
     background-color: #005FFB;
     color: #ffffff;
     width: 150px;
-    padding: 10px 14px ;
+    padding: 10px 14px;
     border: none;
-    border-radius: 4px ;
+    border-radius: 4px;
     font-size: 18px;
-    margin-top: 18px;
-    margin-left: 22px;
+    margin-left: 0; /* Removed margin to center properly */
     cursor: pointer;
     transform: translateZ(50px);
     transition: all 0.3s;
 }
-.hero-btn button:hover{
+
+.hero-btn button:hover {
     background-color: transparent;
     color: #005FFB;
     border: 1px solid #005FFB;
-    transform: translateZ(0px) ;
+    transform: translateZ(0px);
 }
+
 /* my image styling */
-.img-div{
-    width: 578px;
-    height: 522px;
+.img-div {
+    max-width: 578px; /* Fluid width */
+    width: 100%;
+    height: auto;
     border-radius: 24px;
     overflow: hidden;
 }
-.img-div img{
-    width: 578px;
-    height: 520px;
+
+.img-div img {
+    width: 100%; /* Image scales with container */
+    height: auto;
     border-radius: 23px;
     object-fit: cover;
+    display: block;
 }
+
 /* impact-section styling  */
-.impact-section{
+.impact-section {
     background-color: #011738;
     display: flex;
     justify-content: center;
-    gap:170px;
-    padding: 35px 0px;
-    color:#ffffff;
-    
+    gap: 30px; /* Reduced gap for mobile */
+    padding: 35px 20px; /* Added side padding */
+    color: #ffffff;
+    flex-wrap: wrap; /* Allow items to stack */
 }
-.impact-div{
+
+.impact-div {
     font-family: sans-serif;
     text-align: center;
-    width: 285px;
+    max-width: 285px; /* Fluid width */
+    width: 100%;
     padding: 25px 35px;
     border-radius: 12px;
-      box-shadow: 0 0 15px #0075F1, 0 0 30px #0075F1;
-      cursor: pointer;
-      transition: all 0.5s ease-out;
+    box-shadow: 0 0 15px #0075F1, 0 0 30px #0075F1;
+    cursor: pointer;
+    transition: all 0.5s ease-out;
 }
-.impact-div:hover{
-    transform: rotate(0deg) scale(1.1) ;
-    box-shadow: inset 0px 0px 25px #0075F1 , 0 0 0 ;
+
+.impact-div:hover {
+    transform: rotate(0deg) scale(1.1);
+    box-shadow: inset 0px 0px 25px #0075F1, 0 0 0;
 }
-.impact-div h3{
+
+.impact-div h3 {
     font-size: 38px;
     margin-bottom: 8px;
 }
-.impact-div p{
+
+.impact-div p {
     font-size: 18px;
     font-weight: bold;
-    color: #4E5D74; 
+    color: #4E5D74;
 }
+
 /* experience-section styling  */
-.skill-section{
+.skill-section {
     background-color: #011738;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 44px;
-    padding-bottom: 50px;
-}
-/* .img-div{
-    
-} */
- /* flex the frontend and backend skills flex */
- .backend-frontend-flex{
-    display: flex;
-    gap: 120px;
+    padding: 50px 20px; /* Added side padding */
     width: 100%;
-    padding: 33px 60px;
- }
-#web-skills{
-    width: 170px;
+}
+
+ /* flex the frontend and backend skills flex */
+.backend-frontend-flex {
+    display: flex;
+    gap: 40px; /* Reduced gap for smaller screens */
+    width: 100%;
+    padding: 33px 10px;
+    flex-wrap: wrap; /* Allow stacking */
+    justify-content: center;
+}
+
+#web-skills {
+    max-width: 170px; /* Fluid width */
+    width: 100%;
     padding: 10px 20px;
     border-radius: 10px;
-    margin-left: 160px;
+    margin: 0 auto 20px auto; /* Centered instead of fixed margin */
     text-align: center;
     font-size: 18px;
     font-weight: normal;
     color: #3284ff;
-    box-shadow:inset 0px 0px 20px #A7FF52;
+    box-shadow: inset 0px 0px 20px #A7FF52;
 }
-.skill-div{
+
+.skill-div {
     font-family: "Rubik", sans-serif;
     color: #ffffff;
-    padding: 50px;
-    padding: 33px 60px;
+    padding: 10px; /* Reduced padding to fit mobile */
+    max-width: 1200px;
+    width: 100%;
 }
-.skills-content{
+
+.skills-content {
     text-align: center;
 }
-.frontend-all-skills{
-    width: 500px;
+
+.frontend-all-skills {
+    max-width: 500px; /* Fluid width */
+    width: 100%;
 }
-.backend-all-skills{
-    width: 500px;
+
+.backend-all-skills {
+    max-width: 500px; /* Fluid width */
+    width: 100%;
 }
-.skill-div h1{
+
+.skill-div h1 {
     font-size: 40px;
     margin-bottom: 30px;
 }
-.skill-div p{
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+.skill-div p {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 18px;
     font-weight: 600;
     color: #6B788C;
     margin-bottom: 21px;
 }
+
 /* about my skills  */
-.my-skill{
+.my-skill {
     margin-bottom: 27px;
 }
-.lable{
+
+.lable {
     display: flex;
     justify-content: space-between;
     margin-bottom: 8px;
     font-size: 18px;
     color: #b7c9e4;
 }
-.fill{
+
+.fill {
     background-color: #01336F;
     width: 100%;
     height: 6px;
     border-radius: 12px;
 }
-.bar{
+
+.bar {
     height: 6px;
     background-color: #005FFB;
     border-radius: 12px;
 }
+
 /* My skill experience */
-.HC{width: 90%;}
-.css-frem{width: 85%;}
-.JS{width: 74%;}
-.react-NextJS{width: 70%;}
-.RD{width: 55%;}
-.node-js{width: 65%;}
-.EX{width: 80%;}
-.DB{width: 71%;}
-.RA{width: 76%;}
+.HC { width: 90%; }
+.css-frem { width: 85%; }
+.JS { width: 74%; }
+.react-NextJS { width: 70%; }
+.RD { width: 55%; }
+.node-js { width: 65%; }
+.EX { width: 80%; }
+.DB { width: 71%; }
+.RA { width: 76%; }
+
 /* Our Services Section styling  */
-.services-section{
-    font-family:"Rubik", sans-serif; ;
+.services-section {
+    font-family: "Rubik", sans-serif;
     background-color: #001030;
     text-align: center;
-    padding: 55px 30px;
+    padding: 55px 20px; /* Added side padding */
     color: #ffffff;
-
+    width: 100%;
+    overflow: hidden;
 }
-.services-section h1{
+
+/* Custom class to handle the border left issue without breaking layout */
+.service-intro {
+    margin: 0 auto 20px;
+    border-left: 3px solid greenyellow;
+    padding-left: 10px;
+    display: inline-block;
+}
+
+.services-section h1 {
     font-size: 2.1rem;
     margin-bottom: 40px;
+    margin-top: 10px;
 }
-.services-detail{
-    font-family:"Rubik", sans-serif; 
+
+.services-detail {
+    font-family: "Rubik", sans-serif;
     background-color: #001030;
     display: flex;
-    justify-content:center;
+    justify-content: center;
     gap: 45px;
-    padding: 0 20px;
+    padding: 0;
     color: #ffffff;
-
+    flex-wrap: wrap; /* Stack services on mobile */
 }
-.services{
+
+.services {
     background-color: #011738;
-    width: 337px;
-    height: 447px;
+    max-width: 337px; /* Fluid width */
+    width: 100%;
+    height: auto; /* Allow height to grow */
+    min-height: 447px; /* Keep some height on desktop */
     text-align: center;
     padding: 55px 20px;
     border-radius: 20px;
@@ -293,129 +363,159 @@ html body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 20px;
 }
-.services h1{
+
+.services h1 {
     font-size: 27px;
     color: #E3E6EA;
-    margin: 30px 0 45px 0;
+    margin: 30px 0 20px 0;
 }
-.services p{
+
+.services p {
     font-size: 16px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     color: #6B788C;
 }
-.services button{
+
+.services button {
     background-color: transparent;
-    font-size: 18px ;
+    font-size: 18px;
     color: #ffffff;
     padding: 8px 20px;
     border: none;
     outline: none;
     border-left: 2px solid #A7FF52;
     border-right: 2px solid #A7FF52;
-    margin-top: 25px;
+    margin-top: auto; /* Pushes button to bottom */
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.5s;
     /* animations properties */
-    animation-name:services-btn-hover;
+    animation-name: services-btn-hover;
     animation-timing-function: linear;
     animation-duration: 1s;
     animation-iteration-count: infinite;
     animation-direction: alternate;
 }
-.services button:hover{
-        animation-name: services-btn;
-        animation-duration: 0.5s;
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
-        animation-direction: alternate;
+
+.services button:hover {
+    animation-name: services-btn;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
 }
+
 /* my-portfolio-section styling  */
-.my-portfolio-section{
+.my-portfolio-section {
     background-color: #011738;
-    padding: 30px 20px;
+    padding: 30px 20px; /* Added side padding */
     color: #ffffff;
-    font-family:"Rubik", sans-serif; 
+    font-family: "Rubik", sans-serif;
     text-align: center;
+    width: 100%;
+    overflow: hidden;
 }
-.my-portfolio-section h1{
+
+.my-portfolio-section h1 {
     margin-bottom: 20px;
     font-size: 40px;
 }
-.my-portfolio-section p{
-    font-size: 17px ;
+
+.my-portfolio-section p {
+    font-size: 17px;
     font-weight: 600;
     color: #6B788C;
     margin-bottom: 50px;
 }
-.all-projects{
+
+.all-projects {
     display: flex;
     gap: 10px;
     overflow: hidden;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* Stack projects */
     justify-content: center;
 }
+
 .all-projects h3 {
     margin-bottom: 13px;
     font-weight: normal;
 }
-.all-projects p{
+
+.all-projects p {
     font-weight: normal;
     max-width: 300px;
 }
-.all-projects img{
-    width: 240px;
+
+.all-projects img {
+    max-width: 240px; /* Fluid width */
+    width: 100%;
     height: 330px;
+    object-fit: cover;
     border-radius: 15px;
     margin-bottom: 16px;
     transition: transform 0.4s ease;
 }
-.all-projects img:hover{
+
+.all-projects img:hover {
     transform: scale(1.05);
 }
-.down{
+
+.down {
     margin-top: 50px;
 }
+
 /* contact section styling */
-.contact-section{
+.contact-section {
     background-color: #001030;
     font-family: "Rubik", sans-serif;
     display: flex;
     justify-content: center;
     gap: 30px;
-    padding: 25px 15px;
+    padding: 25px 20px; /* Added side padding */
     color: #ffffff;
+    flex-wrap: wrap; /* Stack contact form on mobile */
 }
-.contact-section h1{
+
+.contact-section h1 {
     font-size: 40px;
     margin-bottom: 23px;
 }
-.phone-email-div{
+
+.phone-email-div {
     display: flex;
     justify-content: space-between;
     padding: 13px 0;
+    gap: 10px;
+    flex-wrap: wrap;
 }
-.phone-email-div{
+
+.phone-email-div {
     margin-bottom: 23px;
 }
-.phone-email-div #PEL{
+
+.phone-email-div #PEL {
     font-size: 20px;
     color: #6B788C;
 }
-.contact-section #PEL{
+
+.contact-section #PEL {
     padding-top: 23px;
     font-size: 20px;
     color: #6B788C;
 }
-.form-detail{
+
+.form-detail {
     background-color: #011738;
-    width: 568px;
-    padding: 20px 20px;
+    max-width: 568px; /* Fluid width */
+    width: 100%;
+    padding: 20px;
     border-radius: 20px;
     box-shadow: 0px 0px 13px #005FFB;
 }
-.form-detail input{
+
+.form-detail input {
     background-color: transparent;
     padding: 18px 10px;
     border-radius: 15px;
@@ -423,23 +523,28 @@ html body{
     font-size: 18px;
     color: #ffffff;
     outline: none;
+    width: 100%; /* Ensure inputs take full width */
 }
-.form-detail input:focus{
+
+.form-detail input:focus {
     border: 0.5px solid #A7FF52;
 }
-.name-detail{
+
+.name-detail {
     display: flex;
     gap: 23px;
     width: 100%;
     justify-content: space-between;
+    flex-wrap: wrap; /* Stack name inputs on mobile */
 }
-#email-inp{
-    margin: 18px;
+
+#email-inp {
+    margin: 18px 0;
     width: 100%;
     display: block;
-    margin-left: 0;
 }
-.form-detail textarea{
+
+.form-detail textarea {
     background-color: transparent;
     width: 100%;
     height: 200px;
@@ -450,13 +555,17 @@ html body{
     font-size: 20px;
     outline: none;
     color: #ffffff;
-}.form-detail textarea:focus{
+    resize: vertical;
+}
+
+.form-detail textarea:focus {
     border: 0.5px solid #A7FF52;
 }
-.form-detail button{
+
+.form-detail button {
     background-color: transparent;
     width: 100%;
-    padding: 9px ;
+    padding: 9px;
     font-size: 18px;
     font-weight: bold;
     margin-top: 16px;
@@ -464,55 +573,17 @@ html body{
     border: 1px solid #A7FF52;
     color: #ffffff;
     cursor: pointer;
-    transition: all 0.5s ;
+    transition: all 0.5s;
 }
-.form-detail button:hover{
+
+.form-detail button:hover {
     box-shadow: inset 0px 0px 20px #A7FF52;
 }
 
-/* Responsive Styles */
-@media (max-width: 1024px) {
-    .impact-section { gap: 40px; flex-wrap: wrap; }
-    .services-detail { gap: 30px; }
-}
-
+/* Media Queries for refinement */
 @media (max-width: 768px) {
-    .navBar-section { position: relative; padding: 15px; }
-    .nav-ul { flex-direction: column; align-items: center; gap: 10px; font-size: 16px; }
-    .hero-section { padding: 40px 10px; text-align: center; }
-    .content-div { width: 100%; font-size: 18px; padding: 0 10px; }
-    .content-div h1 { font-size: 28px; }
-    .content-div p { font-size: 16px; }
-    .hero-btn button { margin: 15px auto 0; display: block; }
-    .img-div { width: 100%; height: auto; margin-top: 20px; }
-    .img-div img { width: 100%; height: auto; }
-    
-    .impact-section { flex-direction: column; align-items: center; gap: 20px; padding: 20px 10px; }
-    .impact-div { width: 90%; padding: 20px; }
-    .impact-div h3 { font-size: 32px; }
-    .impact-div p { font-size: 15px; }
-    
-    .skill-section { flex-direction: column; padding-bottom: 20px; }
-    .backend-frontend-flex { flex-direction: column; padding: 20px; gap: 40px; width: 100%; }
-    .frontend-all-skills, .backend-all-skills { width: 100%; }
-    #web-skills { margin-left: 0; margin: 0 auto 20px auto; }
-    .skill-div { padding: 10px; }
-    .skill-div h1 { font-size: 28px; }
-    
-    .services-detail { flex-direction: column; align-items: center; }
-    .services { width: 100%; height: auto; padding: 30px 15px; }
-    .services h1 { margin: 20px 0; font-size: 22px; }
-    .services img { width: 50px; }
-    
-    .all-projects { flex-direction: column; align-items: center; }
-    .all-projects img { width: 90%; height: auto; max-width: 350px; }
-    .down { margin-top: 30px; }
-    
-    .contact-section { flex-direction: column; padding: 20px 10px; }
+    .navBar-section { position: relative; }
     .contact-section h1 { font-size: 28px; }
-    .my-detail-div { width: 100%; margin-bottom: 30px; }
-    .form-detail { width: 100%; }
-    .name-detail { flex-direction: column; gap: 10px; }
-    #email-inp { margin: 10px 0; }
-    .form-detail textarea { height: 150px; }
+    .form-detail button { margin-bottom: 20px; }
+    .name-detail input { width: 100%; }
 }
